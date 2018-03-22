@@ -131,7 +131,23 @@ public class Main {
         System.out.println(set);
     }
 
-    public static void main(String[] args) {
+    public static void threadDemo1() throws InterruptedException {
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("run in another thread");
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
+        t.join();
+    }
+
+    public static void threadDemo2() throws InterruptedException {
+        Runnable rs =
+    }
+
+    public static void main(String[] args) throws InterruptedException {
 //        byte[] rawData = readFromFile("text.txt");
 //        String string = new String(rawData);
 //        System.out.println("File contence: "+string);
@@ -150,6 +166,7 @@ public class Main {
         //staticExample();
         //setDemo();
         //mapDemo();
-        hashEqualsDemo();
+        //hashEqualsDemo();
+        threadDemo1();
     }
 }
