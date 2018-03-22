@@ -166,27 +166,31 @@ public class Main {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        byte[] rawData = readFromFile("text.txt");
-        String string = new String(rawData);
-        System.out.println("File contence: "+string);
-
-        String fileName = "text.txt";
-        try (FileInputStream fls = new FileInputStream(fileName)){
-            Scanner s = new Scanner(fls);
-            while (s.hasNextLine()) {
-                String line = s.nextLine();
-                System.out.println("Line: "+line);
-            }
-        } catch (IOException exception) {
-            throw new RuntimeException("Error reading file: "+fileName);
-        }
-        listDemo();
-        staticExample();
-        setDemo();
-        mapDemo();
-        hashEqualsDemo();
-        threadDemo1();
-        threadDemo2();
-        threadDemo3();
+//        byte[] rawData = readFromFile("text.txt");
+//        String string = new String(rawData);
+//        System.out.println("File contence: "+string);
+//
+//        String fileName = "text.txt";
+//        try (FileInputStream fls = new FileInputStream(fileName)){
+//            Scanner s = new Scanner(fls);
+//            while (s.hasNextLine()) {
+//                String line = s.nextLine();
+//                System.out.println("Line: "+line);
+//            }
+//        } catch (IOException exception) {
+//            throw new RuntimeException("Error reading file: "+fileName);
+//        }
+//        listDemo();
+//        staticExample();
+//        setDemo();
+//        mapDemo();
+//        hashEqualsDemo();
+//        threadDemo1();
+//        threadDemo2();
+//        threadDemo3();
+        MainForm window = new MainForm();
+        window.pack();
+        window.setVisible(true);
+        System.exit(0);
     }
 }
