@@ -11,6 +11,6 @@ public class ComplexCalculations implements Runnable {
                 }
             }
         }
-        System.out.println("result"+j);
+        System.out.println("result: "+j);
     }
 }

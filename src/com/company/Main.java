@@ -144,29 +144,49 @@ public class Main {
     }
 
     public static void threadDemo2() throws InterruptedException {
-        Runnable rs =
+        Runnable r = new ComplexCalculations();
+        Thread t = new Thread(r);
+        t.start();
+        t.join();
+    }
+
+    public static void threadDemo3() throws InterruptedException {
+        Runnable[] rs = new Runnable[2];
+        Thread[] ts = new Thread[rs.length];
+        for (int i = 0; i<rs.length; i++) {
+            rs[i] = new ComplexCalculations();
+            ts[i] = new Thread(rs[i]);
+        }
+        for (int i = 0; i<rs.length; i++) {
+            ts[i].start();
+        }
+        for (int i = 0; i<rs.length; i++) {
+            ts[i].join();
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
-//        byte[] rawData = readFromFile("text.txt");
-//        String string = new String(rawData);
-//        System.out.println("File contence: "+string);
-//
-//        String fileName = "text.txt";
-//        try (FileInputStream fls = new FileInputStream(fileName)){
-//            Scanner s = new Scanner(fls);
-//            while (s.hasNextLine()) {
-//                String line = s.nextLine();
-//                System.out.println("Line: "+line);
-//            }
-//        } catch (IOException exception) {
-//            throw new RuntimeException("Error reading file: "+fileName);
-//        }
-        //listDemo();
-        //staticExample();
-        //setDemo();
-        //mapDemo();
-        //hashEqualsDemo();
+        byte[] rawData = readFromFile("text.txt");
+        String string = new String(rawData);
+        System.out.println("File contence: "+string);
+
+        String fileName = "text.txt";
+        try (FileInputStream fls = new FileInputStream(fileName)){
+            Scanner s = new Scanner(fls);
+            while (s.hasNextLine()) {
+                String line = s.nextLine();
+                System.out.println("Line: "+line);
+            }
+        } catch (IOException exception) {
+            throw new RuntimeException("Error reading file: "+fileName);
+        }
+        listDemo();
+        staticExample();
+        setDemo();
+        mapDemo();
+        hashEqualsDemo();
         threadDemo1();
+        threadDemo2();
+        threadDemo3();
     }
 }
